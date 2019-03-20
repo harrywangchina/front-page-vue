@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .inner {
+                max-width: 900px;
+                margin: 0 auto;
+                text-align: center;
+            }
+            h2 {
+                color: #42b983;
+                font-size: 1.5em;
+                font-weight: 400;
+                margin: 0;
+                padding: 0.5em 0;
+            }
+            .point {
+                display: block;
+                margin: 0 auto;
+                width: 300px;
+                padding: 0 40px 30px;
+            }
+            .point::before {
+                content: "—";
+                color: #42b983;
+            }
+            .imgs {
+                margin-bottom: 300px;
+            }
+            img {
+                width: 720px;
+                margin: 20px 0;
+                filter: grayscale(100%);
+                opacity: 0.66;
+                transition: all .5s ease;
+            }
+            img:hover {
+                filter: none;
+                opacity: 1.0;
+            }
+            #sponsors.active img {
+                filter: none;
+                opacity: 1;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="inner">
+            <div class="point">
+                <h2>易用</h2>
+                <p>已经会了 HTML、CSS、JavaScript？即刻阅读指南开始构建应用！</p>
+            </div>
+        
+            <div class="point">
+                <h2>灵活</h2>
+                <p>不断繁荣的生态系统，可以在一个库和一套完整框架之间自如伸缩。</p>
+            </div>
+        
+            <div class="point">
+                <h2>高效</h2>
+                <p>
+                20kB min+gzip 运行大小<br>
+                超快虚拟 DOM <br>
+                最省心的优化
+                </p>
+            </div>
+        </div>
+        <div id="sponsors" class="imgs">
+            <div>
+                <img src="/src/assets/images/vuejobs.png" alt="vuejobs" />
+            </div>
+            <div>
+                <img src="/src/assets/images/vuemastery.png" alt="vuemastery" />
+            </div>
+            <div>
+                <img src="/src/assets/images/vueschool.png" alt="vueschool" />
+            </div>
+        </div>
+        <div class="imgs">
+            <div>
+                <img src="/src/assets/images/bit.png" alt="bit" />
+            </div>
+            <div>
+                <img src="/src/assets/images/tooltwist.png" alt="tooltwist" />
+            </div>
+            <div>
+                <img src="/src/assets/images/vehikl.png" alt="vehikl" />
+            </div>
+        </div>
+        <script>
+            (function(){
+                var topScrolled = false
+                var sponsors = document.getElementById('sponsors')
+                var sponsorTop = sponsors.offsetTop
+                var sponsorActive = false
+
+                window.addEventListener('resize', function () {
+                    sponsorTop = sponsors.offsetTop
+                })
+
+                window.addEventListener('scroll', function () {
+                    if (window.pageYOffset > sponsorTop - 100) {
+                    if (!sponsorActive) {
+                        sponsorActive = true
+                        sponsors.classList.add('active')
+                    }
+                    } else {
+                    if (sponsorActive) {
+                        sponsorActive = false
+                        sponsors.classList.remove('active')
+                    }
+                    }
+                });
+            })();
+        </script>
+    </body>
+</html>
